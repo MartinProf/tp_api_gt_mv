@@ -2,22 +2,22 @@ let urlHopital = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_
 let urlChirurgie = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&limit=100"
 
 const regionAdministrative = [
-    {value: "RSS01", key: "Bas-Saint-Laurent"},
-    {value: "RSS02", key: "Saguenay - Lac-Saint-Jean"},
-    {value: "RSS03", key: "Capitale-Nationale"},
-    {value: "RSS04", key: "Mauricie et Centre-du-Québec"},
-    {value: "RSS05", key: "Estrie"},
-    {value: "RSS06", key: "Montréal"},
-    {value: "RSS07", key: "Outaouais"},
-    {value: "RSS08", key: "Abitibi-Témiscamingue"},
-    {value: "RSS09", key: "Côte-Nord"},
-    {value: "RSS10", key: "Nord-du-Québec"},
-    {value: "RSS11", key: "Gaspésie - Îles-de-la-Madeleine"},
-    {value: "RSS12", key: "Chaudière-Appalaches"},
-    {value: "RSS13", key: "Laval"},
-    {value: "RSS14", key: "Lanaudière"},
-    {value: "RSS15", key: "Laurentides"},
-    {value: "RSS16", key: "Montérégie"}
+    {value: "RSS01", key: "RSS01", "text": "Bas-Saint-Laurent"},
+    {value: "RSS02", key: "RSS02", "text": "Saguenay - Lac-Saint-Jean"},
+    {value: "RSS03", key: "RSS03", "text": "Capitale-Nationale"},
+    {value: "RSS04", key: "RSS04", "text": "Mauricie et Centre-du-Québec"},
+    {value: "RSS05", key: "RSS05", "text": "Estrie"},
+    {value: "RSS06", key: "RSS06", "text": "Montréal"},
+    {value: "RSS07", key: "RSS07", "text": "Outaouais"},
+    {value: "RSS08", key: "RSS08", "text": "Abitibi-Témiscamingue"},
+    {value: "RSS09", key: "RSS09", "text": "Côte-Nord"},
+    {value: "RSS10", key: "RSS10", "text": "Nord-du-Québec"},
+    {value: "RSS11", key: "RSS11", "text": "Gaspésie - Îles-de-la-Madeleine"},
+    {value: "RSS12", key: "RSS12", "text": "Chaudière-Appalaches"},
+    {value: "RSS13", key: "RSS13", "text": "Laval"},
+    {value: "RSS14", key: "RSS14", "text": "Lanaudière"},
+    {value: "RSS15", key: "RSS15", "text": "Laurentides"},
+    {value: "RSS16", key: "RSS16", "text": "Montérégie"}
 ]
 
 const nomEtablissement = [
@@ -135,8 +135,7 @@ const nomEtablissement = [
     {value: "112", key: "RSS16", "text": "CISSS de la Montérégie-Est"},
     {value: "113", key: "RSS16", "text": "CISSS de la Montérégie-Ouest"},
     {value: "114", key: "RSS16", "text": "CISSS de la Montérégie-Ouest"},
-    {value: "115", key: "RSS16", "text": "CISSS de la Montérégie-Ouest"}
-        
+    {value: "115", key: "RSS16", "text": "CISSS de la Montérégie-Ouest"}    
 ]
 
 const nomInstallation = [
