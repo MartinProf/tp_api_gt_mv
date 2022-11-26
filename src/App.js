@@ -1,11 +1,11 @@
 import './App.css';
-import RegionAdministrative from './controle/RegionAdministrative';
+import ChoixInstallation from './controle/RegionAdministrative';
 
 
 function App() {
   return (
     <div className="App">
-      <RegionAdministrative/>
+      <ChoixInstallation />
     </div>
   );
 }
