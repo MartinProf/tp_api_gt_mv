@@ -15,7 +15,7 @@ class Navbar extends Component{
                         <a className="item" href="https://developer.mozilla.org/fr/docs/Web">MDN</a>
                         <a className="item" href="https://www.jobillico.com/recherche-emploi?skwd=react&scty=&icty=0&ipc=0&sil=&sjdpl=&sdl=&imc1=0&imc2=0&flat=0&flng=0&mfil=40&ipg=1&clr=1">Carrière en React</a>
                         <div className="right menu">
-                            <div classname="ui image">
+                            <div className="ui image">
                                 <img className="ui tiny bordered image" src="/images/ambulance.png" alt="Marche pas"/>
                             </div>
                         </div>
