@@ -1,36 +1,22 @@
-import { Component } from "react";
-import { Select } from "semantic-ui-react";
+import { useState } from "react";
+import { Button, Select } from "semantic-ui-react";
 import { regionAdministrative, nomEtablissement, nomInstallation } from "./tableau";
 import './ChoixInstallation.css';
 
-class ChoixInstallation extends Component{
+function ChoixInstallation ( ) {
 
-    state ={ region: "", nomEtab: "", nomInstall: "", data: []}
-
-    onRegionChange = (e,data) => { 
-        this.setState({ region: data.value })
-
-    }
-
-    onNameEtabChange = (e,data) => {
-        this.setState({nomEtab: data.value })
-    }
-
-    onInstaChange = (e,data) => {
-        this.setState({nomInstall: data.value })
-
-    }
-    
-
-    render(){
-        return(
-            <div className="choixInstallation ui container">
-                <Select placeholder="Région administrative" options={regionAdministrative} value={this.state.region}  onChange={this.onRegionChange}/>
-                <Select placeholder="Nom de l'établissement" options={nomEtablissement.filter(a => a.code === this.state.region)} value={this.state.nomEtab} onChange={this.onNameEtabChange}/>
-                <Select placeholder="Nom de l'Installation" options={nomInstallation.filter(a => a.code === this.state.nomEtab)} value={this.state.nomInstall} onChange={this.onInstaChange}/>
-            </div>
-        )
-    }
+    const [ region, setRegion ] = useState();
+    const [ etablis, setEtablis] = useState();
+    const [ install, setInstall] = useState();
+  
+    return(
+        <div className="ui container">
+            <Select placeholder="Région administrative" key={regionAdministrative} options={regionAdministrative} onChange={(e,data)=> setRegion(data.value)} value={region} />
+            <Select placeholder="Nom de l'établissement" key={nomEtablissement} options={nomEtablissement.filter(a => a.code === region)} value={etablis} onChange={(e, data) => setEtablis(data.value)}/>
+            <Select placeholder="Nom de l'Installation" key={nomInstallation} options={nomInstallation.filter(a => a.code === etablis)} value={install} onChange={(e, data) => setInstall(data.value)}/>
+            <Button onClick={install}>Visualiser</Button>
+        </div>
+    );
 }
 
 export default ChoixInstallation
