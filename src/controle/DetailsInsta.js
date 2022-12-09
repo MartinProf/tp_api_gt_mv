@@ -25,7 +25,7 @@ function DetailsInsta ( props ) {
         <>
         <Card>
             <Card.Content>
-                <Card.Header>{data[0]._id}</Card.Header>
+                <Card.Header>Bob</Card.Header>
             <Card.Meta>
                 <span className='date'>Joined in 2015</span>
             </Card.Meta>
