@@ -10,12 +10,17 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar /><br/><br/><br/><br/>
-      <ChoixInstallation onClick={(value) => setPermis(value)} />
-      <DetailsInsta  numeroInstallation={permis}/>
-      <br/><br/><br/><br/>
-      <h1>Bonjour</h1>
-      <h1>{permis}</h1>
+
+       <Navbar />
+      <div className='ui segment' style={{height: "65px" }}/>
+
+      <div className='ui segment' style={{height: "90px", backgroundColor: "red" }}>
+        <ChoixInstallation className='installation' onClick={(value) => setPermis(value)} /></div>
+
+      <div style={{height: "200px", backgroundColor: "blue", "padding": "10px"  }}>
+        <DetailsInsta  numeroPermis={permis} />
+      </div>
+    
     </div>
   );
 }
