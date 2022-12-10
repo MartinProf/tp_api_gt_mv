@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Card , Icon } from "semantic-ui-react";
 
-function DetailsInsta ( props ) {
+function DetailsInsta ( {permis} ) {
     
     const [ data, setData ] = useState([]);
 
     useEffect( () => {
-       fetch('https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=150')
+       fetch('https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=116')
       .then(response => response.json())
       .then(data => setData(data.result.records)
         );
     }, []);
     
+    console.log(permis)
     
     /*
         <div>
@@ -25,7 +26,7 @@ function DetailsInsta ( props ) {
         <>
         <Card>
             <Card.Content>
-                <Card.Header>Bob</Card.Header>
+                <Card.Header>{data._id}</Card.Header>
             <Card.Meta>
                 <span className='date'>Joined in 2015</span>
             </Card.Meta>
