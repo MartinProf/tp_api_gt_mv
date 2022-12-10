@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Select } from "semantic-ui-react";
 import { regionAdministrative, nomEtablissement, nomInstallation } from "./tableau";
-import './ChoixInstallation.css';
 
 const ChoixInstallation =  props  => {
 
@@ -20,10 +19,10 @@ const ChoixInstallation =  props  => {
     },[install]);
 
      return(
-        <div className="ui container">
-            <Select placeholder="Région administrative" key={regionAdministrative} options={regionAdministrative} onChange={(e,data)=> setRegion(data.value)} value={region} />
-            <Select placeholder="Nom de l'établissement" key={nomEtablissement} options={nomEtablissement.filter(a => a.code === region)} value={etablis} onChange={(e, data) => setEtablis(data.value)}/>
-            <Select placeholder="Nom de l'Installation" key={nomInstallation} options={nomInstallation.filter(a => a.code === etablis)} value={install} onChange={(e, data) => setInstall(data.value)}/>
+        <div>
+            <Select placeholder="Région administrative" key={regionAdministrative} options={regionAdministrative} onChange={(e,data)=> setRegion(data.value)} value={region} style={{padding: "1em", margin: "1em", 'font-size': "1em" }} />
+            <Select placeholder="Nom de l'établissement" key={nomEtablissement} options={nomEtablissement.filter(a => a.code === region)} value={etablis} onChange={(e, data) => setEtablis(data.value)} style={{padding: "1em", margin: "1em", 'font-size': "1em" }}/>
+            <Select placeholder="Nom de l'Installation" key={nomInstallation} options={nomInstallation.filter(a => a.code === etablis)} value={install} onChange={(e, data) => setInstall(data.value)} style={{padding: "1em", margin: "1em", 'font-size': "1em" }}/>
             <Button onClick={ () => props.onClick(permis) }>Valider</Button>
         </div>
     );
