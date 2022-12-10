@@ -18,12 +18,18 @@ const DetailsInsta = ( props ) => {
     const tauxOccupation = () => {
         const cf = parseInt(data[0].Nombre_de_civieres_fonctionnelles)
         const co = parseInt(data[0].Nombre_de_civieres_occupees)
-        return (co/cf*100).toFixed(2);
+        return parseFloat((co/cf*100).toFixed(2));
     };
-
-
-    //const test = new Hopital(112, "CISSS de la Montérégie-Est", "Hôpital Pierre-Boucher", "51229011", "47","62","29","9","2022-12-09T17:46");
-    
+   
+    const styleConsitionnel = () => {
+        if (tauxOccupation()>100) {
+            return 'height: "150px", backgroundColor:"red"';
+        }if (tauxOccupation()>80) {
+            return 'height: "150px", backgroundColor:"yellow"';
+        } else {
+            return 'height: "150px", backgroundColor:"green"';
+        }
+    }
     /*
         <div>
             {data.map(item => {
@@ -32,17 +38,17 @@ const DetailsInsta = ( props ) => {
         </div>
     */
 
-
-
     return(
         <Container>
             { data[0] ? 
-                    <Card>
+                    <Card style={ tauxOccupation()>100 ?{ height: "250px", backgroundColor:"#E76C54" } : { height: "250px", backgroundColor:"#8BDD50" } }>
                         <Card.Content>
                             <Card.Header>{ data[0].Nom_installation }</Card.Header>
                             <Card.Description>Civières fonctionnelles:{  data[0].Nombre_de_civieres_fonctionnelles }</Card.Description>
                             <Card.Description>Civieres occupées:{  data[0].Nombre_de_civieres_occupees }</Card.Description>
-                            <Card.Description>Taux d'occupation: {tauxOccupation() }%</Card.Description>
+                            <Card.Description>Taux d'occupation: { tauxOccupation() }%</Card.Description>
+                            <Card.Description>Patient sur civière 24h+: { data[0].Nombre_de_patients_sur_civiere_plus_de_24_heures }</Card.Description>
+                            <Card.Description>Patient sur civière 48h+: { data[0].Nombre_de_patients_sur_civiere_plus_de_48_heures }</Card.Description>
                         </Card.Content>
                         <Card.Content extra><p><Icon name='clock outline' />{  data[0].Mise_a_jour }</p></Card.Content>
                     </Card> 
