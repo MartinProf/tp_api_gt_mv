@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Card , Container, Icon } from "semantic-ui-react";
 
-
 const DetailsInsta = ( props ) => {
 
     const [ data, setData ] = useState([{}]);
@@ -39,12 +38,12 @@ const DetailsInsta = ( props ) => {
     */
 
     return(
-        <Container>
+        <Container className="ui centered cards">
             { data[0] ? 
-                    <Card style={ tauxOccupation()>100 ?{ height: "250px", backgroundColor:"#E76C54" } : { height: "250px", backgroundColor:"#8BDD50" } }>
+                    <Card style={ tauxOccupation()>100 ?{ height: "250px", backgroundColor:"#E2777A", marginTop: "25px" } : { height: "250px", backgroundColor:"#99CC99", marginTop: "25px" } }>
                         <Card.Content>
                             <Card.Header>{ data[0].Nom_installation }</Card.Header>
-                            <Card.Description>Civières fonctionnelles:{  data[0].Nombre_de_civieres_fonctionnelles }</Card.Description>
+                            <Card.Description >Civières fonctionnelles:{  data[0].Nombre_de_civieres_fonctionnelles }</Card.Description>
                             <Card.Description>Civieres occupées:{  data[0].Nombre_de_civieres_occupees }</Card.Description>
                             <Card.Description>Taux d'occupation: { tauxOccupation() }%</Card.Description>
                             <Card.Description>Patient sur civière 24h+: { data[0].Nombre_de_patients_sur_civiere_plus_de_24_heures }</Card.Description>
