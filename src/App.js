@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Label } from 'semantic-ui-react';
+import { Button, Label } from 'semantic-ui-react';
 import './App.css';
 import ChoixInstallation from './controle/ChoixInstallation';
 import DetailsInsta from './controle/DetailsInsta';
@@ -12,19 +12,19 @@ function App() {
   return (
     <div className="App">
 
-       <Navbar />
+       <Navbar  />
 
-      <div className='ui segment' style={{height: "65px" }}/>
+      <div className='ui segment' style={{height: "90px", backgroundColor: "#DAE6F0", marginTop: "80px"}}>
+        <Label style={{fontSize: "2em", backgroundColor: "#DAE6F0", color: "#223654" }}>Êtat des salles d'urgences au Québec </Label></div>
 
-      <div className='ui segment' style={{height: "90px", backgroundColor: "brown" }}>
-        <Label style={{fontSize: "2em" }}>Êtat des salles d'urgences au Québec </Label>
-      </div>
+      <div className='ui segment' style={{height: "100px", backgroundColor: "#DD5D20" }}>
+        <ChoixInstallation className='installation' onClick={(value) => setPermis(value)}/></div>
 
-      <div className='ui segment' style={{height: "100px", backgroundColor: "#74992e" }}>
-        <ChoixInstallation className='installation' onClick={(value) => setPermis(value)} /></div>
+      <div style={{height: "300px", backgroundColor: "#DAE6F0", padding: "10px" }}>
+        <DetailsInsta  numeroPermis={permis} /></div>
 
-      <div style={{height: "300px", backgroundColor: "#123456", "padding": "10px", justifyItems: "stretch", justifyContent: "center"  }}>
-        <DetailsInsta  numeroPermis={permis} />
+      <div className='ui segment fixed bottom' style={{height: "100px", backgroundColor: "#223654" }}>
+          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Travail réalisé par Guillaume Tremblay et Martin Vézina</Button>
       </div>
     
     </div>

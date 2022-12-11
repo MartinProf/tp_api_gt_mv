@@ -20,12 +20,12 @@ const ChoixInstallation =  props  => {
 
      return(
         <div>
-            <Select placeholder="Région administrative" key={regionAdministrative} options={regionAdministrative} onChange={(e,data)=> setRegion(data.value)} value={region} style={{padding: "1em", margin: "1em", fontSize: "1em" }} />
-            <Select placeholder="Nom de l'établissement" key={nomEtablissement} options={nomEtablissement.filter(a => a.code === region)} value={etablis} onChange={(e, data) => setEtablis(data.value)} style={{padding: "1em", margin: "1em", fontSize: "1em" }}/>
-            <Select placeholder="Nom de l'Installation" key={nomInstallation} options={nomInstallation.filter(a => a.code === etablis)} value={install} onChange={(e, data) => setInstall(data.value)} style={{padding: "1em", margin: "1em", fontSize: "1em" }}/>
-            <Button onClick={ () => props.onClick(permis) }>Valider</Button>
+            <Select placeholder="Région administrative" key={regionAdministrative} options={regionAdministrative} onChange={(e,data)=> setRegion(data.value)} value={region} style={{padding: "1em", margin: "1em", fontSize: "0.90em", width: "25%", background: "#DAE6F0" }} />
+            <Select placeholder="Nom de l'établissement" key={nomEtablissement} options={nomEtablissement.filter(a => a.code === region)} value={etablis} onChange={(e, data) => setEtablis(data.value)} style={{padding: "1em", margin: "1em", fontSize: "0.90em", width: "25%", backgroundColor: "#DAE6F0"  }}/>
+            <Select placeholder="Nom de l'Installation" key={nomInstallation} options={nomInstallation.filter(a => a.code === etablis)} value={install} onChange={(e, data) => setInstall(data.value)} style={{padding: "1em", margin: "1em", fontSize: "0.90em", width: "25%", backgroundColor: "#DAE6F0"  }}/>
+            <Button style={{ backgroundColor: "#DAE6F0" }} onClick={ () => props.onClick(permis) }>  Valider  </Button>
         </div>
     );
 }
 
-export default ChoixInstallation
+export default ChoixInstallation;
