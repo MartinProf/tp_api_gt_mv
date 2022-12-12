@@ -20,23 +20,6 @@ const DetailsInsta = ( props ) => {
         return parseFloat((co/cf*100).toFixed(2));
     };
    
-    const styleConsitionnel = () => {
-        if (tauxOccupation()>100) {
-            return 'height: "150px", backgroundColor:"red"';
-        }if (tauxOccupation()>80) {
-            return 'height: "150px", backgroundColor:"yellow"';
-        } else {
-            return 'height: "150px", backgroundColor:"green"';
-        }
-    }
-    /*
-        <div>
-            {data.map(item => {
-                return <pre>{JSON.stringify(item)}</pre>
-            })}
-        </div>
-    */
-
     return(
         <Container className="ui centered cards">
             { data[0] ? 
