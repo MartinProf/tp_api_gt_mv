@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Card , Container } from "semantic-ui-react";
 
 const DetailSurg = ( props ) => {
-
+    
     const [ dataAn, setDataAn ] = useState([{}]);
-    const [ data6, setData6 ] = useState([{}]);
-    const [ data0, setData0 ] = useState([{}]);
     const noRegion = props.numeroRegion;
 
     const periode = () => {
@@ -27,98 +25,69 @@ const DetailSurg = ( props ) => {
         return output;
     };
 
-    const periodeVise = periode();
-    let idSurSixMois ="";
-    let idSurZeroMois = "";
-
-    function Timer () {
-        const [time, setTime] = useState(0);
-          
-        useEffect(() => {
-          setInterval(() => setTime(1), 1000); 
-          // counts up 1 every second
-          // we need to stop using setInterval when component unmounts
-        }, []);
-    };
-    Timer();
-
-    useEffect( () => {
-        fetch(`https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&q=${noRegion}&q=${periodeVise}&q=an`)
+    useEffect(  () => {
+        const periodeVise = periode();
+         fetch(`https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&q=${noRegion}&q=${periodeVise}`)
         .then(response => response.json())
-        .then(data => setDataAn(data.result.records))
+        .then( data => setDataAn(data.result.records))
         .catch((e) => console.log(e));
-        idSurSixMois = dataAn[0]._id-1;
-    }, []);
-
-    useEffect( () => {
-        fetch(`https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&q=${idSurSixMois}`)
-        .then(response => response.json())
-        .then(data => setData6(data.result.records))
-        .catch((e) => console.log(e));
-        idSurZeroMois = dataAn[0]._id-2;
-    }, []);
-
-    useEffect( () => {
-        fetch(`https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&q=${idSurZeroMois}`)
-        .then(response => response.json())
-        .then(data => setData0(data.result.records))
-        .catch((e) => console.log(e));
-    }, []);
-
+    }, [ noRegion ]);
 
     return(
         <Container className="ui centered cards">
             { dataAn[0] ? 
-                <Card style= {{height: "275px", backgroundColor:"#E2777A", marginTop: "25px"}}>
+                <Card style= {{height: "300px", backgroundColor:"#223654", marginTop: "60px"}}>
                     <Card.Content>
-                        <Card.Header>1 an et plus d'attente</Card.Header>
-                        <Card.Description >Chirurgie generale: {  dataAn[0].Chirurgie_generale }</Card.Description>
-                        <Card.Description>Chirurgie orthopedique: {  dataAn[0].Chirurgie_orthopedique }</Card.Description>
-                        <Card.Description>Chirurgie plastique:{  dataAn[0].Chirurgie_plastique }</Card.Description>
-                        <Card.Description>Chirurgie vasculaire:{  dataAn[0].Chirurgie_vasculaire }</Card.Description>
-                        <Card.Description>Neurochirurgie:{  dataAn[0].Neurochirurgie }</Card.Description>
-                        <Card.Description>Obstetrique et gynecologie:{  dataAn[0].Obstetrique_et_gynecologie }</Card.Description>
-                        <Card.Description>Ophtalmologie:{  dataAn[0].Ophtalmologie }</Card.Description>
-                        <Card.Description>ORL chirurgie cervico-faciale:{  dataAn[0].ORL_chirurgie_cervico }</Card.Description>
-                        <Card.Description>Urologie:{  dataAn[0].Urologie }</Card.Description>
-                        <Card.Description>Autres:{  dataAn[0].Autres }</Card.Description>
-                        <Card.Description>Total:{  dataAn[0].Total }</Card.Description>
+                        <Card.Header style={{color: "#DAE6F0", fontSize: "25px"}}>0 à 6 mois d'attente</Card.Header>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie generale: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Chirurgie_generale }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie orthopedique: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Chirurgie_orthopedique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie plastique:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Chirurgie_plastique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie vasculaire:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Chirurgie_vasculaire }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Neurochirurgie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Neurochirurgie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Obstetrique et gynecologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Obstetrique_et_gynecologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Ophtalmologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Ophtalmologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">ORL chirurgie cervico-faciale:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0]["ORL_chirurgie_cervico-faciale"] }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Urologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Urologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Autres:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Autres }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Total:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[0].Total }</b></span></Card.Description>
                     </Card.Content>
                 </Card>: undefined                 
             }
-            { data6[0] ? 
-                <Card style= {{height: "275px", backgroundColor:"#E2777A", marginTop: "25px"}}>
+
+            { dataAn[1] ? 
+                <Card style= {{height: "300px", backgroundColor:"#223654", marginTop: "60px"}}>
                     <Card.Content>
-                        <Card.Header>6- 12 mois d'attente</Card.Header>
-                        <Card.Description >Chirurgie generale: {  data6[0].Chirurgie_generale }</Card.Description>
-                        <Card.Description>Chirurgie orthopedique: {  data6[0].Chirurgie_orthopedique }</Card.Description>
-                        <Card.Description>Chirurgie plastique:{  data6[0].Chirurgie_plastique }</Card.Description>
-                        <Card.Description>Chirurgie vasculaire:{  data6[0].Chirurgie_vasculaire }</Card.Description>
-                        <Card.Description>Neurochirurgie:{  data6[0].Neurochirurgie }</Card.Description>
-                        <Card.Description>Obstetrique et gynecologie:{  data6[0].Obstetrique_et_gynecologie }</Card.Description>
-                        <Card.Description>Ophtalmologie:{  data6[0].Ophtalmologie }</Card.Description>
-                        <Card.Description>ORL chirurgie cervico-faciale:{  data6[0].ORL_chirurgie_cervico }</Card.Description>
-                        <Card.Description>Urologie:{  data6[0].Urologie }</Card.Description>
-                        <Card.Description>Autres:{  data6[0].Autres }</Card.Description>
-                        <Card.Description>Total:{  data6[0].Total }</Card.Description>
+                        <Card.Header style={{color: "#DAE6F0", fontSize: "25px"}}>6- 12 mois d'attente</Card.Header>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie generale: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Chirurgie_generale }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie orthopedique: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Chirurgie_orthopedique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie plastique:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Chirurgie_plastique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie vasculaire:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Chirurgie_vasculaire }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Neurochirurgie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Neurochirurgie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Obstetrique et gynecologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Obstetrique_et_gynecologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Ophtalmologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Ophtalmologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">ORL chirurgie cervico-faciale:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1]["ORL_chirurgie_cervico-faciale"] }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Urologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Urologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Autres:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Autres }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Total:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[1].Total }</b></span></Card.Description>
                     </Card.Content>
                 </Card>: undefined                 
             }
-            { data0[0] ? 
-                <Card style= {{height: "275px", backgroundColor:"#E2777A", marginTop: "25px"}}>
+            
+            { dataAn[2] ? 
+                <Card style= {{height: "300px", backgroundColor:"#223654", marginTop: "60px"}}>
                     <Card.Content>
-                        <Card.Header>0 à 6 mois d'attente</Card.Header>
-                        <Card.Description >Chirurgie generale: {  data0[0].Chirurgie_generale }</Card.Description>
-                        <Card.Description>Chirurgie orthopedique: {  data0[0].Chirurgie_orthopedique }</Card.Description>
-                        <Card.Description>Chirurgie plastique:{  data0[0].Chirurgie_plastique }</Card.Description>
-                        <Card.Description>Chirurgie vasculaire:{  data0[0].Chirurgie_vasculaire }</Card.Description>
-                        <Card.Description>Neurochirurgie:{  data0[0].Neurochirurgie }</Card.Description>
-                        <Card.Description>Obstetrique et gynecologie:{  data0[0].Obstetrique_et_gynecologie }</Card.Description>
-                        <Card.Description>Ophtalmologie:{  data0[0].Ophtalmologie }</Card.Description>
-                        <Card.Description>ORL chirurgie cervico-faciale:{  data0[0].ORL_chirurgie_cervico }</Card.Description>
-                        <Card.Description>Urologie:{  data0[0].Urologie }</Card.Description>
-                        <Card.Description>Autres:{  data0[0].Autres }</Card.Description>
-                        <Card.Description>Total:{  data0[0].Total }</Card.Description>
+                        <Card.Header style={{color: "#DAE6F0", fontSize: "25px"}}>1 an et plus d'attente</Card.Header>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie generale: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Chirurgie_generale }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie orthopedique: &emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Chirurgie_orthopedique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie plastique:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Chirurgie_plastique }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Chirurgie vasculaire:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Chirurgie_vasculaire }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Neurochirurgie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Neurochirurgie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Obstetrique et gynecologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Obstetrique_et_gynecologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Ophtalmologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Ophtalmologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">ORL chirurgie cervico-faciale:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2]["ORL_chirurgie_cervico-faciale"] }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Urologie:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Urologie }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Autres:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Autres }</b></span></Card.Description>
+                        <Card.Description style={{color: "#DAE6F0", fontSize: "13px"}} textAlign="left">Total:&emsp;<span style={{fontSize: "16px", color:"#DD5D20"}}><b>{  dataAn[2].Total }</b></span></Card.Description>
                     </Card.Content>
                 </Card>: undefined                 
             }
