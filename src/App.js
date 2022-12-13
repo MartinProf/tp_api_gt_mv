@@ -29,7 +29,7 @@ function App() {
       </div>
       
       <div className='ui segment fixed bottom' style={{height: "100px", backgroundColor: "#223654" }}>
-          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Pour la région administrative de: </Button>
+          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Pour la région administrative de: {regionCode} </Button>
       </div>
       <div style={{height: "400px", backgroundColor: "#DAE6F0", padding: "10px" }}>
         <DetailSurg numeroRegion={regionCode}/>
