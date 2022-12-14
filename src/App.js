@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button, Label } from 'semantic-ui-react';
 import './App.css';
 import ChoixInstallation from './controle/ChoixInstallation';
 import DetailsInsta from './controle/DetailsInsta';
 import Navbar from './controle/Navbar';
 import DetailSurg from './controle/DetailSurg';
+import { regionAdministrative } from './controle/tableau';
 
 function App() {
   
   const [ permis, setPermis] = useState();
   const [ regionCode, setRegionCode] = useState();
-     
+  const [ regionMRC, setRegionMRC ] = useState();
+
+  useEffect(() => {
+    if(regionCode !== undefined)
+    setRegionMRC(regionAdministrative.filter(a => a.code === regionCode[0]).map(a => a.text))
+  }, [regionCode]);
+  
   return (
     <div className="App">
 
@@ -29,7 +36,7 @@ function App() {
       </div>
       
       <div className='ui segment fixed bottom' style={{height: "100px", backgroundColor: "#223654" }}>
-          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Pour la région administrative de: {regionCode} </Button>
+          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Délais d'attentes pour la région administrative:&emsp; <span style={{fontSize: "30px", color:"#DD5D20"}}><b>{ regionMRC }</b></span></Button>
       </div>
       <div style={{height: "400px", backgroundColor: "#DAE6F0", padding: "10px" }}>
         <DetailSurg numeroRegion={regionCode}/>
