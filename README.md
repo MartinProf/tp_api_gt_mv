@@ -1,7 +1,7 @@
 # TP_API
 Travail pratique API Guillaume et Martin
 
-Url utilise par l'API :
+Url utilisé par l'API :
  urlHopital = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=115"
  urlChirurgie = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&limit=100"
  
