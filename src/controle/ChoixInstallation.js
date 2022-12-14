@@ -1,3 +1,8 @@
+/*
+    Le composant tire les informations du fichier tableau et forme les listes de choix à l'utilisateur
+    Les choix sont ensuite envoyé vers la classe App
+*/
+
 import { useEffect, useState } from "react";
 import { Button, Select } from "semantic-ui-react";
 import { regionAdministrative, nomEtablissement, nomInstallation } from "./tableau";

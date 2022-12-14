@@ -1,3 +1,10 @@
+/*
+    Le composant tire les informations de l'API "Hôpital Urgence" et envoyer dans une forme Cards
+    Ce composant est uniquement la lecture de l'API est une mise en page.
+    Il n'y a pas de dépendence
+
+    API utilisée : Hopital = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=5"
+*/
 import React, { useEffect, useState } from "react";
 import { Card , Container, Icon } from "semantic-ui-react";
 
