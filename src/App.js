@@ -36,7 +36,7 @@ function App() {
       </div>
       
       <div className='ui segment fixed bottom' style={{height: "100px", backgroundColor: "#223654" }}>
-          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Pour la région administrative: {regionMRC}</Button>
+          <Button style={{ color: "#FFFFFF", fontSize: "1.5em", backgroundColor: "#223654"}} >Délais d'attentes pour la région administrative:&emsp; <span style={{fontSize: "30px", color:"#DD5D20"}}><b>{ regionMRC }</b></span></Button>
       </div>
       <div style={{height: "400px", backgroundColor: "#DAE6F0", padding: "10px" }}>
         <DetailSurg numeroRegion={regionCode}/>
