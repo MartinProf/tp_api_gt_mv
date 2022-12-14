@@ -24,7 +24,7 @@ par la suite, utiliser la commande npm start et le projet va maintenant être vi
     1.React
     2.Semantic-UI
 
-## **Installation**
+## **Utilisation**
     1. Sélectionnez une MRC
     2. Sélectionnez une installation
     3. Sélectionnez un Établissement
