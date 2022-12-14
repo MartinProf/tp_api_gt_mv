@@ -1,5 +1,6 @@
 # TP_API
 Travail pratique API Guillaume et Martin
+Travail présenté à: Rehouma Haythem
 
 Url utilisé par l'API :
 urlHopital = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=115"
