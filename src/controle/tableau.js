@@ -1,5 +1,8 @@
-//let urlHopital = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=a9272cc9-8234-40d1-9806-9f6b4c75c20d&limit=115"
-//let urlChirurgie = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1&limit=100"
+/*
+    Tableaux générés depuis les API utilisé dans le projet
+    
+    Données validées en Nov 2022
+*/
 
 export const regionAdministrative = [
     {value: "01", code: "RSS01", key: 1, text: "Bas-Saint-Laurent"},

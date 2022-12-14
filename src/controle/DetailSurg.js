@@ -1,3 +1,11 @@
+/*
+    Le composant tire les informations de l'API "Délai attente Chirurgie Québec" et envoyer dans une forme Cards
+    Ce composant est uniquement la lecture de l'API est une mise en page.
+    La fonction période génère une période d'appel à l'API en déféré de 3 mois car les données sont accessible 3 mois plus tard
+    Il n'y a pas de dépendence
+
+    API utilisée: Chirurgie = "https://www.donneesquebec.ca/recherche/api/3/action/datastore_search?resource_id=7c83f4be-bc3a-4756-86db-115e8ead93f1"
+*/
 import React, { useEffect, useState } from "react";
 import { Card , Container } from "semantic-ui-react";
 
