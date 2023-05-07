@@ -17,6 +17,7 @@ const ChoixInstallation = (props) => {
   const [install, setInstall] = useState();
   const [permis, setPermis] = useState();
   const [regionCode, setRegionCode] = useState();
+  const [selectedRegionCode, setSelectedRegionCode] = useState();
 
   useEffect(() => {
     const installation = [...nomInstallation];
@@ -33,12 +34,12 @@ const ChoixInstallation = (props) => {
     const regionAdmin = [...regionAdministrative];
     const filtred2 = regionAdmin
       .filter((regi) => {
-        return regi.key === parseInt(regionCode);
+        return regi.key === parseInt(selectedRegionCode);
       })
       .map((a) => a.code);
 
     setRegionCode(filtred2);
-  }, [regionCode]);
+  }, [selectedRegionCode]);
 
   return (
     <div>
@@ -48,7 +49,7 @@ const ChoixInstallation = (props) => {
         options={regionAdministrative}
         onChange={(e, data) => {
           setRegion(data.value);
-          setRegionCode(data.value);
+          setSelectedRegionCode(data.value);
         }}
         code={regionCode}
         value={region}

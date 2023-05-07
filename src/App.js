@@ -15,12 +15,13 @@ function App() {
   const [regionNum] = useState();
 
   useEffect(() => {
-    if (regionCode !== undefined)
-      setRegionMRC(
-        regionAdministrative
-          .filter((a) => a.code === regionCode[0])
-          .map((a) => a.text)
-      );
+    if (regionCode !== undefined) {
+      const regionMRCResult = regionAdministrative
+        .filter((a) => a.code === regionCode[0])
+        .map((a) => a.text);
+
+      setRegionMRC(regionMRCResult[0]);
+    }
   }, [regionCode]);
 
   return (
